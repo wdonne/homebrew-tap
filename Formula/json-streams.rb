@@ -1,30 +1,30 @@
-# Generated with JReleaser 1.24.0 at 2026-05-21T10:53:09.493767+02:00
+# Generated with JReleaser 1.24.0 at 2026-05-21T10:54:33.043941+02:00
 
 class JsonStreams < Formula
-  desc "JSON Streams utilities"
+  desc "JSON Streams"
   homepage "https://jsonstreams.io"
-  url "https://github.com/json-event-sourcing/pincette-jes-cli/releases/download/3.1.3/pincette-jes-cli-3.1.3-jar-with-dependencies.jar", :using => :nounzip
-  version "3.1.3"
-  sha256 "979f650e0d9f070a885ae88610e8f4e90e77b3071fdb58b04a8d0298968ab6f2"
+  url "https://github.com/json-event-sourcing/pincette-json-streams/releases/download/2.8.11/pincette-json-streams-2.8.11-jar-with-dependencies.jar", :using => :nounzip
+  version "2.8.11"
+  sha256 "175c61e71f1c79dbf87ebea00089dd24232c99510d0a602ef9902d1d8573d57d"
   license "BSD-2-Clause"
 
   depends_on "openjdk@21"
 
   def install
-    libexec.install "pincette-jes-cli-3.1.3-jar-with-dependencies.jar"
+    libexec.install "pincette-json-streams-2.8.11-jar-with-dependencies.jar"
 
     bin.mkpath
-    File.open("#{bin}/json-streams-kit", "w") do |f|
+    File.open("#{bin}/json-streams", "w") do |f|
       f.write <<~EOS
         #!/bin/bash
         export JAVA_HOME="#{Language::Java.overridable_java_home_env(nil)[:JAVA_HOME]}"
-        exec "${JAVA_HOME}/bin/java" -jar #{libexec}/pincette-jes-cli-3.1.3-jar-with-dependencies.jar "$@"
+        exec "${JAVA_HOME}/bin/java" -jar #{libexec}/pincette-json-streams-2.8.11-jar-with-dependencies.jar "$@"
       EOS
     end
   end
 
   test do
-    output = shell_output("#{bin}/json-streams-kit --version")
-    assert_match "3.1.3", output
+    output = shell_output("#{bin}/json-streams --version")
+    assert_match "2.8.11", output
   end
 end
