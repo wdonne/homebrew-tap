@@ -1,4 +1,4 @@
-# Generated with JReleaser 1.24.0 at 2026-06-17T16:59:54.130665+02:00
+# Generated with JReleaser 1.24.0 at 2026-06-17T17:01:19.971025+02:00
 
 class JsonStreams < Formula
   desc "JSON Streams"
